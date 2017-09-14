@@ -1,0 +1,16 @@
+entity Post {
+	title String required
+    content String required
+    createdOn LocalDate
+}
+
+entity Comment {
+	name String required
+    email String required
+    content String required
+    createdOn LocalDate
+}
+
+relationship OneToMany {
+  Post{comments} to Comment{post}
+}

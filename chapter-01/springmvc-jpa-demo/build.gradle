@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.2.5'
+    }
+}
+
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'com.bmuschko.tomcat'
+
+version = '1.0-SNAPSHOT'
+	
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	jcenter()
+}
+
+dependencies {
+	def tomcatVersion = '7.0.76'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+           
+	compile "org.springframework:spring-webmvc:4.3.7.RELEASE"
+	compile "org.springframework.data:spring-data-jpa:1.11.1.RELEASE"
+	compile "org.slf4j:jcl-over-slf4j:1.7.22"
+	compile "org.slf4j:slf4j-api:1.7.22"
+	compile "org.slf4j:slf4j-log4j12:1.7.22"
+	compile "log4j:log4j:1.2.17"
+	compile "com.h2database:h2:1.4.193"
+	compile "commons-dbcp:commons-dbcp:1.4"
+	compile "mysql:mysql-connector-java:5.1.38"
+	compile "org.hibernate:hibernate-entitymanager:5.2.5.Final"
+	providedCompile "javax.servlet:javax.servlet-api:3.1.0"
+	compile "org.thymeleaf:thymeleaf-spring4:2.1.4.RELEASE"
+}

@@ -1,0 +1,39 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'io.spring.gradle:dependency-management-plugin:1.0.0.RELEASE'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: "io.spring.dependency-management"
+
+version = '1.0-SNAPSHOT'
+	
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	jcenter()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.spring.platform:platform-bom:Brussels-SR1'
+    }
+}
+
+dependencies {
+	compile('org.springframework:spring-context')
+	compile('org.springframework:spring-test')
+	testCompile('junit:junit')
+	compile('org.slf4j:jcl-over-slf4j')
+	compile('org.slf4j:slf4j-api')
+	compile('org.slf4j:slf4j-log4j12')
+	compile('log4j:log4j')
+	compile('org.mongodb:mongo-java-driver')
+}
